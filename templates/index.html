@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сокращатель ссылок</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>🔗 Сокращатель ссылок</h1>
+      <p class="subtitle">Вставьте длинную ссылку — получите короткую</p>
+
+      <form method="POST" class="form">
+        <input type="text" name="url" placeholder="https://example.com/очень/длинная/ссылка" required>
+        <button type="submit">Сократить</button>
+      </form>
+
+      {% if short_url %}
+      <div class="result">
+        <p>Готово! Ваша короткая ссылка:</p>
+        <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
