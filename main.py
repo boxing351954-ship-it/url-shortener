@@ -3,8 +3,10 @@ import sqlite3
 import string
 import random
 from flask import Flask, request, redirect, render_template
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "links.db")
 
 
